@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Building a Futures Market Making Bot - Winning the UChicago Trading Competition, Part 1 - Austin Liu&#39;s Blog</title>
+<meta name="description" content="I blog about coding, math and trading">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/favicon.png">
+
+<link rel="stylesheet" href="/css/style.css?rnd=1596424741" />
+
+
+
+<meta property="og:title" content="Building a Futures Market Making Bot - Winning the UChicago Trading Competition, Part 1" />
+<meta property="og:description" content="How we built a customizable trading bot and won the Futures Market Making (MM) case." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/chicago1/" />
+<meta property="article:published_time" content="2020-08-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-02T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Building a Futures Market Making Bot - Winning the UChicago Trading Competition, Part 1"/>
+<meta name="twitter:description" content="How we built a customizable trading bot and won the Futures Market Making (MM) case."/>
+
+
+
+
+
+
+
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <header class="site-header">
+		
+			<div class="wrap">
+	<a class="site-title" href="/">Austin Liu&#39;s Blog</a>
+	<nav class="site-nav">
+		
+		
+		<a class="" href="/about/" title="">About</a>
+		
+	</nav>
+</div>
+
+		
+	</header>
+	<div class="container">
+        <main id="main" tabindex="-1"> 
+            
+
+    <article class="post">
+        <header>
+            <h1 class="post-title">Building a Futures Market Making Bot - Winning the UChicago Trading Competition, Part 1</h1>
+        </header>
+        <div class="content">
+            <p>Back in April, I participated in the UChicago Midwest Trading Competition with a couple of friends, and we ended up winning 2 out of 3 cases and the overall competition. So I&rsquo;ve procrastinated on writing this blog post for 3 months, but I needed to get this out before I start working at a NY trading firm in a few weeks. This is the first part in (hopefully) a series of my favorite trading cases.</p>
+<p>First, let me take you through how we tackled one of my favorite cases, building a futures market making bot on the Chicago Electricity Futures Market.</p>
+<h2 id="the-case">The Case</h2>
+<p>You are a market maker on the Chicago Electricity Futures Market. Real electricity trades between consumers and producers on the Chicago Electricity Spot Market, but the futures market is where traders bet on the price of electricity in the future. For instance, an electricity producer could sell 10 MWh of December futures to lock in the price of their electricity in December, thus hedging against the price of electricity. There are 4 futures contracts which expire in June, August, October and December. Upon expiry, they settle to the spot price of electricity at that time.</p>
+<p>Here&rsquo;s how the electricity spot market works. Chicago produces electricity in 3 ways: Natural Gas generators ($2/MWh), coal generators ($3/MWh), and peaker plants. Electricity is consumed in that order, first natural gas, then coal and finally the peaker plants. Each year, the city starts out with fresh capacity of natural gas (around 1300MWh) and coal (around 450MWh), and moves onto the next source once the previous is exhausted. Peaker plants are special - they start at $3.001/MWh and do not run out, but each extra MWh produced costs $.001 more than the previous. This is what the price/consumption graph looks like.</p>
+<p><img src="/price_consumption.png" alt=""></p>
+<p>Each day, consumers purchase a random amount of electricity. Each day, you also know how much they used the previous day before you start trading. Note that you cannot buy or sell electricity on the spot market itself, you can only observe it.</p>
+<p>As a market maker (MM), your job is to facilitate trading of futures contracts by reducing the spread in the market, which lower costs of transactions for traders. Take a market with bids for $1.50 and offers at $2.00. A &lsquo;fair&rsquo; price of the contract would be $1.75, the mid price. However, the $.50 spread between the bid and offer makes it impossible to trade at the fair price. You (a MM) could come in and bid for $1.60 and offer at $1.90, decreasing the spread from $.50 to $.30. Someone who buys a stock pays $1.90 for it instead of $2.00, saving $.10, while you make the difference between $1.90 and the &lsquo;fair&rsquo; mid price of $1.75. If someone else then sells a contract to you at $1.60, you have made a clean profit of $.30 without a resulting position in the contract, and everyone&rsquo;s happy. But it&rsquo;s not that simple: If the contract price rises to $2.00 after your sale, then you have made a loss of $.10. Also, another market maker could come into the market to bid for $1.70 and offer at $1.80, taking away your profits.</p>
+<p>To make money market making, you have to be smart - know the value of the contract by predicting the price of electricity in the future. You also need to be aggressive - provide your best price to the market to make more profitable trades. Therefore, a successful bot requires 3 components: a good guess for the &lsquo;fair&rsquo; price of the contract, a bot which trades aggressively but minimizes risk taking, and a way to augment the dumb bot with human intuition. I will discuss each of these parts below.</p>
+<h2 id="whats-our-fair">What&rsquo;s our fair?</h2>
+<p>We first try to compute our &lsquo;fair&rsquo;, a prediction of the price of the 4 future contracts. Let&rsquo;s do this in a Jupyter Notebook!</p>
+<iframe width="100%" height="150" name="iframe" src="/chicago1nb.html" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+<h2 id="execution-matters">Execution matters</h2>
+<p>During the competition, all teams have a position limit of 1000 lots in each contract. This means that you are not allowed to be long or short more than 1000 lots of each contract. In the real world, market makers are similarly limited by the amount of risk they can take with their capital. Teams are effectively limited in the amount of trades they can make, so no one can dominate all of the trades in the market.
+<img src="/case1pnl.png" alt="">
+This is the profit and loss (pnl) chart of one of the rounds. How did we (rice-berkeley-mit) manage to make more profit than the next 2 teams combined? Ultimately, I think most of our edge came from how we traded more aggressively and managed our position limits more intelligently, such that our trading volume was multiples of what other teams did.</p>
+<p>In this section, I want to break down our market making strategy by building up pieces of our strategy from a naive market making bot. We&rsquo;ll discuss various test cases of market situations which a naive bot fails on, and strategies our bot used to profit from.</p>
+<h4 id="the-naive-market-making-bot">The naive market making bot</h4>
+<p>A naive MM bot takes in a <code>fair</code> as input, and asks for an <code>edge</code> around this fair. A <code>size</code> variable For instance, <code>fair</code> = $3.50, <code>edge</code> = $.10, <code>size</code> = 100. At each time interval, the bot places a bid into the market for 100 lots for $3.40, and places an ask for 100 lots at $3.60. Essentially, the MM is asking for an edge, or expected profit, of $.10 for each trade that it makes.</p>
+<h4 id="case-1-the-informed-customer">Case 1: The informed customer</h4>
+<p>A trader enters the market with information that the fair price is $3.70. (We still think fair = $3.50.) For ten successive days, the traderbuys 100 lots from us at $3.60. After the contract expires at $3.70, we have made a loss of $.10 * 1000 = $100. Could we have done better? Should we have sold the last 100 lots to the trader at $3.60, despite being short 900 lots already?</p>
+<p>We could be more averse to taking on large, unbalanced positions, and this can be represented by the <code>fade</code> parameter. Let <code>fade</code> = $.02. That means for every 100 lots of position we take, we will augment our fair price by $.02. After selling 500 lots (thus short 500), our new fair is $3.50 + $.10 = $3.60. Our new market is $3.50 at $3.70. The trader will stop buying from us because he will not make a profit anymore. With fading, we ended up selling 500 stocks at an average price of $3.65, making a loss of $25, a big improvement.</p>
+<h4 id="case-2-competing-with-other-market-makers">Case 2: Competing with other market makers</h4>
+<p>It&rsquo;s nice to be able to make a $.10 edge on each trade, but with 15 other market makers in the market, you won&rsquo;t get to make any trades. So let&rsquo;s reduce our edge to $.05. What happens in situations where there are no other market makers quoting in the market? Should you be satisfied with only $.05 in edge?</p>
+<p>This is where we have to start considering the action of other market participants. We look at the book, which collects all bids and asks on the market (and their respective sizes) to know what other traders are doing. We can perform &lsquo;book subtraction&rsquo;, removing our own orders from what&rsquo;s reported in the market feed. This is an important step to prevent our bot from bidding against ourself.</p>
+<p>We introduce the <code>slack</code> parameter, which represents flexibility in our edge. Say <code>slack</code> = $.10. Then, our edge varies from $.05 to $.15 depending on market conditions. If there are no other MMs on the market, we would present our bids and asks with an edge of $.15, so $3.35 at $3.65 in the above example. If there is a competing bid of $3.40, then we will &lsquo;penny&rsquo; that bid by changing our bid to $3.41. By improving our price by a penny, we ensured that any customer trade will be executed with us first. This pennying mechanism ensures that we make the most trades possible, while making the most from each trade. This is one of the biggest differentiators you can implement in trading competitions, as it lets you trade significantly more trades. There are some intricacies you have to pay attention to, such as making sure that the book subtraction is done consistently.</p>
+<h4 id="case-3-building-scales">Case 3: Building scales</h4>
+<p>An uninformed customer comes into the market and buys up all of the offers on the market, and still wants to buy more. Because you don&rsquo;t have more orders on the market, you missed out on selling to the customer at a great price. We can avoid this problem by building scales - multiple levels of bids and offers at increasing edges. For instance, we can offer 100 lots at $3.60, $3.80, $4.00, $4.20 etc. Most of the time, these extra orders will not be traded against, but due to the immaturity of our competition market, we get to trade at $3.80 or $4.00 with reasonable frequency and end up making a massive EV from the trade.</p>
+<p>That&rsquo;s basically how our bot traded. These strategies have insane benefit for their implementation complexity, but most other competitors stopped at case 1 or case 2. Tuning the parameters for <code>edge</code>, <code>fade</code>, <code>size</code> and <code>slack</code> is also crucial in maximizing pnl. While we can tune these on the provided test exchange, these may not work on the real competition due to more competition, so we need the flexibility to tune parameters during live trading.</p>
+<h2 id="day-of-the-competition">Day of the competition</h2>
+<p>We built a monitoring interface to tune parameters during live trading. The column titles are futures ticker | our bid size | our bid price | fair | our ask price | our ask size | position change in last tick | current position.</p>
+<video controls preload="auto" width="100%" class="html-video">
+    <source src="/post/chicago1/TradeUI.mp4" type="video/mp4" }}>
+  <p>Your browser doesn't support embedded videos, but don't worry, you can <a href="/post/chicago1/TradeUI.mp4">download it</a> and watch it with your favorite video player!</p>
+</video>
+<p>During live trading, we mainly focused on our position change and current position. If our trading volume decreases, then we can decrease our edge appropriately to to gain more volume. If our position becomes too imbalanced and does not revert quickly, we can increase our fade to revert our position quickly.</p>
+<p>To dynamically change our trading parameters (and any other part of the bot), we used <code>exec</code> to read an execute an arbitrary <code>params.py</code> file. Here&rsquo;s what <code>params.py</code> looks like.</p>
+<pre><code>self.max_pos = 950
+self.params = {}
+self.params['EFM'] = {
+        &quot;edge&quot;: .005, # One sided edge from fair
+        &quot;fade&quot;: .005, # Fade per 100 delta
+        &quot;size&quot;: 100, # Size of trade
+        &quot;edge_slack&quot;: .10 # edge to ask for beyond min edge
+        }
+otherparam = {
+        &quot;edge&quot;: .002,
+        &quot;fade&quot;: .001,
+        &quot;size&quot;: 100,
+        &quot;edge_slack&quot;: .10
+        }
+
+for c in ['EFQ', 'EFV', 'EFZ']:
+    self.params[c] = otherparam
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>Trading is a secretive industry and there are little tutorials out online for how to get started. I only got my start after a lucky internship offer from a trading firm. So if you&rsquo;re a college student who read this blog post and think you&rsquo;re interested in trading, consider participating in <a href="https://traders.mit.edu/">Traders@MIT</a>, <a href="https://midwesttrading.uchicago.edu/">Midwest Trading Competition</a> and the <a href="https://ritc.rotman.utoronto.ca/">Rotman International Trading Competition</a>. I hope this blog post inspired you to try building a trading bot and gave you a head start!</p>
+        </div>
+        
+
+
+<div class="post-info">
+    
+        <div class="post-date">2020-08-02</div>
+    
+    <div class="post-taxonomies">
+        
+            
+    </div>
+</div>
+
+    </article>
+
+    
+
+    
+
+
+        </main>
+	</div>
+	<footer class="site-footer">
+		
+			
+			
+
+			<div class="wrap">
+	<a href="https://github.com/tianyi5309">
+		<span class="icon github">
+		  <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+			<path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+					c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+					c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+					c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+					C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+					c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+					c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+					c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+					c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path>
+		  </svg>
+		</span>
+		<span class="username">tianyi5309</span>
+	</a>
+	<br>
+	<span>Email me at mail@[this domain]</span>
+</div>
+
+		
+	</footer>
+</body>
+</html>

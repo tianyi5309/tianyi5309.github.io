@@ -6,360 +6,73 @@
     <description>Austin Liu&#39;s Blog (Posts)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate>
     
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>/post/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <title>Building a Futures Market Making Bot - Winning the UChicago Trading Competition, Part 1</title>
+      <link>/post/chicago1/</link>
+      <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
-&lt;h2 id=&#34;headings&#34;&gt;Headings&lt;/h2&gt;
-&lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
-&lt;h1 id=&#34;h1&#34;&gt;H1&lt;/h1&gt;
-&lt;h2 id=&#34;h2&#34;&gt;H2&lt;/h2&gt;
-&lt;h3 id=&#34;h3&#34;&gt;H3&lt;/h3&gt;
-&lt;h4 id=&#34;h4&#34;&gt;H4&lt;/h4&gt;
-&lt;h5 id=&#34;h5&#34;&gt;H5&lt;/h5&gt;
-&lt;h6 id=&#34;h6&#34;&gt;H6&lt;/h6&gt;
-&lt;h2 id=&#34;paragraph&#34;&gt;Paragraph&lt;/h2&gt;
-&lt;p&gt;Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p&gt;
-&lt;p&gt;Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p&gt;
-&lt;h2 id=&#34;blockquotes&#34;&gt;Blockquotes&lt;/h2&gt;
-&lt;p&gt;The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code&gt;footer&lt;/code&gt; or &lt;code&gt;cite&lt;/code&gt; element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p&gt;
-&lt;h4 id=&#34;blockquote-without-attribution&#34;&gt;Blockquote without attribution&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;blockquote-with-attribution&#34;&gt;Blockquote with attribution&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;!-- raw HTML omitted --&gt;
-— &lt;!-- raw HTML omitted --&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;tables&#34;&gt;Tables&lt;/h2&gt;
-&lt;p&gt;Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Name&lt;/th&gt;
-&lt;th&gt;Age&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Bob&lt;/td&gt;
-&lt;td&gt;27&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Alice&lt;/td&gt;
-&lt;td&gt;23&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id=&#34;inline-markdown-within-tables&#34;&gt;Inline Markdown within tables&lt;/h4&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Inline   &lt;/th&gt;
-&lt;th&gt;Markdown   &lt;/th&gt;
-&lt;th&gt;In   &lt;/th&gt;
-&lt;th&gt;Table&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;em&gt;italics&lt;/em&gt;&lt;/td&gt;
-&lt;td&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;&lt;del&gt;strikethrough&lt;/del&gt;   &lt;/td&gt;
-&lt;td&gt;&lt;code&gt;code&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;code-blocks&#34;&gt;Code Blocks&lt;/h2&gt;
-&lt;h4 id=&#34;code-block-with-backticks&#34;&gt;Code block with backticks&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;html
-&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-  &amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-  &amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;code-block-indented-with-four-spaces&#34;&gt;Code block indented with four spaces&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-  &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
-  &amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-  &amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;code-block-with-hugos-internal-highlight-shortcode&#34;&gt;Code block with Hugo&amp;rsquo;s internal highlight shortcode&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;lang&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&amp;gt;
-&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&amp;gt;
-  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;meta&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;charset&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt;&amp;gt;
-  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;title&lt;/span&gt;&amp;gt;Example HTML5 Document&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;title&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&amp;gt;
-&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
-  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Test&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&#34;list-types&#34;&gt;List Types&lt;/h2&gt;
-&lt;h4 id=&#34;ordered-list&#34;&gt;Ordered List&lt;/h4&gt;
-&lt;ol&gt;
-&lt;li&gt;First item&lt;/li&gt;
-&lt;li&gt;Second item&lt;/li&gt;
-&lt;li&gt;Third item&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;unordered-list&#34;&gt;Unordered List&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;List item&lt;/li&gt;
-&lt;li&gt;Another item&lt;/li&gt;
-&lt;li&gt;And another item&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;nested-list&#34;&gt;Nested list&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;Item&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;First Sub-item&lt;/li&gt;
-&lt;li&gt;Second Sub-item&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;other-elements--abbr-sub-sup-kbd-mark&#34;&gt;Other Elements — abbr, sub, sup, kbd, mark&lt;/h2&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;GIF&lt;!-- raw HTML omitted --&gt; is a bitmap image format.&lt;/p&gt;
-&lt;p&gt;H&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;O&lt;/p&gt;
-&lt;p&gt;X&lt;!-- raw HTML omitted --&gt;n&lt;!-- raw HTML omitted --&gt; + Y&lt;!-- raw HTML omitted --&gt;n&lt;!-- raw HTML omitted --&gt; = Z&lt;!-- raw HTML omitted --&gt;n&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;Press &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;CTRL&lt;!-- raw HTML omitted --&gt;+&lt;!-- raw HTML omitted --&gt;ALT&lt;!-- raw HTML omitted --&gt;+&lt;!-- raw HTML omitted --&gt;Delete&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; to end the session.&lt;/p&gt;
-&lt;p&gt;Most &lt;!-- raw HTML omitted --&gt;salamanders&lt;!-- raw HTML omitted --&gt; are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p&gt;
-&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;The above quote is excerpted from Rob Pike&amp;rsquo;s &lt;a href=&#34;https://www.youtube.com/watch?v=PAAkCSZUG1c&#34;&gt;talk&lt;/a&gt; during Gopherfest, November 18, 2015. &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;</description>
-    </item>
-    
-    <item>
-      <title>Rich Content</title>
-      <link>/post/rich-content/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rich-content/</guid>
-      <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;instagram-simple-shortcode&#34;&gt;Instagram Simple Shortcode&lt;/h2&gt;
+      <guid>/post/chicago1/</guid>
+      <description>&lt;p&gt;Back in April, I participated in the UChicago Midwest Trading Competition with a couple of friends, and we ended up winning 2 out of 3 cases and the overall competition. So I&amp;rsquo;ve procrastinated on writing this blog post for 3 months, but I needed to get this out before I start working at a NY trading firm in a few weeks. This is the first part in (hopefully) a series of my favorite trading cases.&lt;/p&gt;
+&lt;p&gt;First, let me take you through how we tackled one of my favorite cases, building a futures market making bot on the Chicago Electricity Futures Market.&lt;/p&gt;
+&lt;h2 id=&#34;the-case&#34;&gt;The Case&lt;/h2&gt;
+&lt;p&gt;You are a market maker on the Chicago Electricity Futures Market. Real electricity trades between consumers and producers on the Chicago Electricity Spot Market, but the futures market is where traders bet on the price of electricity in the future. For instance, an electricity producer could sell 10 MWh of December futures to lock in the price of their electricity in December, thus hedging against the price of electricity. There are 4 futures contracts which expire in June, August, October and December. Upon expiry, they settle to the spot price of electricity at that time.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s how the electricity spot market works. Chicago produces electricity in 3 ways: Natural Gas generators ($2/MWh), coal generators ($3/MWh), and peaker plants. Electricity is consumed in that order, first natural gas, then coal and finally the peaker plants. Each year, the city starts out with fresh capacity of natural gas (around 1300MWh) and coal (around 450MWh), and moves onto the next source once the previous is exhausted. Peaker plants are special - they start at $3.001/MWh and do not run out, but each extra MWh produced costs $.001 more than the previous. This is what the price/consumption graph looks like.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/price_consumption.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Each day, consumers purchase a random amount of electricity. Each day, you also know how much they used the previous day before you start trading. Note that you cannot buy or sell electricity on the spot market itself, you can only observe it.&lt;/p&gt;
+&lt;p&gt;As a market maker (MM), your job is to facilitate trading of futures contracts by reducing the spread in the market, which lower costs of transactions for traders. Take a market with bids for $1.50 and offers at $2.00. A &amp;lsquo;fair&amp;rsquo; price of the contract would be $1.75, the mid price. However, the $.50 spread between the bid and offer makes it impossible to trade at the fair price. You (a MM) could come in and bid for $1.60 and offer at $1.90, decreasing the spread from $.50 to $.30. Someone who buys a stock pays $1.90 for it instead of $2.00, saving $.10, while you make the difference between $1.90 and the &amp;lsquo;fair&amp;rsquo; mid price of $1.75. If someone else then sells a contract to you at $1.60, you have made a clean profit of $.30 without a resulting position in the contract, and everyone&amp;rsquo;s happy. But it&amp;rsquo;s not that simple: If the contract price rises to $2.00 after your sale, then you have made a loss of $.10. Also, another market maker could come into the market to bid for $1.70 and offer at $1.80, taking away your profits.&lt;/p&gt;
+&lt;p&gt;To make money market making, you have to be smart - know the value of the contract by predicting the price of electricity in the future. You also need to be aggressive - provide your best price to the market to make more profitable trades. Therefore, a successful bot requires 3 components: a good guess for the &amp;lsquo;fair&amp;rsquo; price of the contract, a bot which trades aggressively but minimizes risk taking, and a way to augment the dumb bot with human intuition. I will discuss each of these parts below.&lt;/p&gt;
+&lt;h2 id=&#34;whats-our-fair&#34;&gt;What&amp;rsquo;s our fair?&lt;/h2&gt;
+&lt;p&gt;We first try to compute our &amp;lsquo;fair&amp;rsquo;, a prediction of the price of the 4 future contracts. Let&amp;rsquo;s do this in a Jupyter Notebook!&lt;/p&gt;
+&lt;iframe width=&#34;100%&#34; height=&#34;150&#34; name=&#34;iframe&#34; src=&#34;/chicago1nb.html&#34; frameborder=&#34;0&#34; scrolling=&#34;no&#34; onload=&#34;resizeIframe(this)&#34;&gt;&lt;/iframe&gt;
+&lt;h2 id=&#34;execution-matters&#34;&gt;Execution matters&lt;/h2&gt;
+&lt;p&gt;During the competition, all teams have a position limit of 1000 lots in each contract. This means that you are not allowed to be long or short more than 1000 lots of each contract. In the real world, market makers are similarly limited by the amount of risk they can take with their capital. Teams are effectively limited in the amount of trades they can make, so no one can dominate all of the trades in the market.
+&lt;img src=&#34;/case1pnl.png&#34; alt=&#34;&#34;&gt;
+This is the profit and loss (pnl) chart of one of the rounds. How did we (rice-berkeley-mit) manage to make more profit than the next 2 teams combined? Ultimately, I think most of our edge came from how we traded more aggressively and managed our position limits more intelligently, such that our trading volume was multiples of what other teams did.&lt;/p&gt;
+&lt;p&gt;In this section, I want to break down our market making strategy by building up pieces of our strategy from a naive market making bot. We&amp;rsquo;ll discuss various test cases of market situations which a naive bot fails on, and strategies our bot used to profit from.&lt;/p&gt;
+&lt;h4 id=&#34;the-naive-market-making-bot&#34;&gt;The naive market making bot&lt;/h4&gt;
+&lt;p&gt;A naive MM bot takes in a &lt;code&gt;fair&lt;/code&gt; as input, and asks for an &lt;code&gt;edge&lt;/code&gt; around this fair. A &lt;code&gt;size&lt;/code&gt; variable For instance, &lt;code&gt;fair&lt;/code&gt; = $3.50, &lt;code&gt;edge&lt;/code&gt; = $.10, &lt;code&gt;size&lt;/code&gt; = 100. At each time interval, the bot places a bid into the market for 100 lots for $3.40, and places an ask for 100 lots at $3.60. Essentially, the MM is asking for an edge, or expected profit, of $.10 for each trade that it makes.&lt;/p&gt;
+&lt;h4 id=&#34;case-1-the-informed-customer&#34;&gt;Case 1: The informed customer&lt;/h4&gt;
+&lt;p&gt;A trader enters the market with information that the fair price is $3.70. (We still think fair = $3.50.) For ten successive days, the traderbuys 100 lots from us at $3.60. After the contract expires at $3.70, we have made a loss of $.10 * 1000 = $100. Could we have done better? Should we have sold the last 100 lots to the trader at $3.60, despite being short 900 lots already?&lt;/p&gt;
+&lt;p&gt;We could be more averse to taking on large, unbalanced positions, and this can be represented by the &lt;code&gt;fade&lt;/code&gt; parameter. Let &lt;code&gt;fade&lt;/code&gt; = $.02. That means for every 100 lots of position we take, we will augment our fair price by $.02. After selling 500 lots (thus short 500), our new fair is $3.50 + $.10 = $3.60. Our new market is $3.50 at $3.70. The trader will stop buying from us because he will not make a profit anymore. With fading, we ended up selling 500 stocks at an average price of $3.65, making a loss of $25, a big improvement.&lt;/p&gt;
+&lt;h4 id=&#34;case-2-competing-with-other-market-makers&#34;&gt;Case 2: Competing with other market makers&lt;/h4&gt;
+&lt;p&gt;It&amp;rsquo;s nice to be able to make a $.10 edge on each trade, but with 15 other market makers in the market, you won&amp;rsquo;t get to make any trades. So let&amp;rsquo;s reduce our edge to $.05. What happens in situations where there are no other market makers quoting in the market? Should you be satisfied with only $.05 in edge?&lt;/p&gt;
+&lt;p&gt;This is where we have to start considering the action of other market participants. We look at the book, which collects all bids and asks on the market (and their respective sizes) to know what other traders are doing. We can perform &amp;lsquo;book subtraction&amp;rsquo;, removing our own orders from what&amp;rsquo;s reported in the market feed. This is an important step to prevent our bot from bidding against ourself.&lt;/p&gt;
+&lt;p&gt;We introduce the &lt;code&gt;slack&lt;/code&gt; parameter, which represents flexibility in our edge. Say &lt;code&gt;slack&lt;/code&gt; = $.10. Then, our edge varies from $.05 to $.15 depending on market conditions. If there are no other MMs on the market, we would present our bids and asks with an edge of $.15, so $3.35 at $3.65 in the above example. If there is a competing bid of $3.40, then we will &amp;lsquo;penny&amp;rsquo; that bid by changing our bid to $3.41. By improving our price by a penny, we ensured that any customer trade will be executed with us first. This pennying mechanism ensures that we make the most trades possible, while making the most from each trade. This is one of the biggest differentiators you can implement in trading competitions, as it lets you trade significantly more trades. There are some intricacies you have to pay attention to, such as making sure that the book subtraction is done consistently.&lt;/p&gt;
+&lt;h4 id=&#34;case-3-building-scales&#34;&gt;Case 3: Building scales&lt;/h4&gt;
+&lt;p&gt;An uninformed customer comes into the market and buys up all of the offers on the market, and still wants to buy more. Because you don&amp;rsquo;t have more orders on the market, you missed out on selling to the customer at a great price. We can avoid this problem by building scales - multiple levels of bids and offers at increasing edges. For instance, we can offer 100 lots at $3.60, $3.80, $4.00, $4.20 etc. Most of the time, these extra orders will not be traded against, but due to the immaturity of our competition market, we get to trade at $3.80 or $4.00 with reasonable frequency and end up making a massive EV from the trade.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s basically how our bot traded. These strategies have insane benefit for their implementation complexity, but most other competitors stopped at case 1 or case 2. Tuning the parameters for &lt;code&gt;edge&lt;/code&gt;, &lt;code&gt;fade&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt; and &lt;code&gt;slack&lt;/code&gt; is also crucial in maximizing pnl. While we can tune these on the provided test exchange, these may not work on the real competition due to more competition, so we need the flexibility to tune parameters during live trading.&lt;/p&gt;
+&lt;h2 id=&#34;day-of-the-competition&#34;&gt;Day of the competition&lt;/h2&gt;
+&lt;p&gt;We built a monitoring interface to tune parameters during live trading. The column titles are futures ticker | our bid size | our bid price | fair | our ask price | our ask size | position change in last tick | current position.&lt;/p&gt;
+&lt;video controls preload=&#34;auto&#34; width=&#34;100%&#34; class=&#34;html-video&#34;&gt;
+    &lt;source src=&#34;/post/chicago1/TradeUI.mp4&#34; type=&#34;video/mp4&#34; }}&gt;
+  &lt;p&gt;Your browser doesn&#39;t support embedded videos, but don&#39;t worry, you can &lt;a href=&#34;/post/chicago1/TradeUI.mp4&#34;&gt;download it&lt;/a&gt; and watch it with your favorite video player!&lt;/p&gt;
+&lt;/video&gt;
+&lt;p&gt;During live trading, we mainly focused on our position change and current position. If our trading volume decreases, then we can decrease our edge appropriately to to gain more volume. If our position becomes too imbalanced and does not revert quickly, we can increase our fade to revert our position quickly.&lt;/p&gt;
+&lt;p&gt;To dynamically change our trading parameters (and any other part of the bot), we used &lt;code&gt;exec&lt;/code&gt; to read an execute an arbitrary &lt;code&gt;params.py&lt;/code&gt; file. Here&amp;rsquo;s what &lt;code&gt;params.py&lt;/code&gt; looks like.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;self.max_pos = 950
+self.params = {}
+self.params[&#39;EFM&#39;] = {
+        &amp;quot;edge&amp;quot;: .005, # One sided edge from fair
+        &amp;quot;fade&amp;quot;: .005, # Fade per 100 delta
+        &amp;quot;size&amp;quot;: 100, # Size of trade
+        &amp;quot;edge_slack&amp;quot;: .10 # edge to ask for beyond min edge
+        }
+otherparam = {
+        &amp;quot;edge&amp;quot;: .002,
+        &amp;quot;fade&amp;quot;: .001,
+        &amp;quot;size&amp;quot;: 100,
+        &amp;quot;edge_slack&amp;quot;: .10
+        }
 
-
-
-
-&lt;style type=&#34;text/css&#34;&gt;
-   .__h_instagram.card {
-      font-family: -apple-system,BlinkMacSystemFont,&#34;Segoe UI&#34;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&#34;Helvetica Neue&#34;,sans-serif;
-      font-size: 14px;
-      border: 1px solid rgb(219, 219, 219);
-      padding: 0;
-	  margin-top: 30px;
-   }
-   .__h_instagram.card .card-header, .__h_instagram.card .card-body {
-      padding: 10px 10px 10px;
-   }
-   .__h_instagram.card img {
-      width: 100%;
-    	height: auto;
-   }
-&lt;/style&gt;
-
-&lt;div class=&#34;__h_instagram s_instagram_simple card&#34; style=&#34;max-width: 640px&#34;&gt;
-	&lt;div class=&#34;card-header&#34;&gt;
-    &lt;a href=&#34;https://www.instagram.com/koloot.design&#34; class=&#34;card-link&#34;&gt;koloot.design&lt;/a&gt;
-  &lt;/div&gt;
-	&lt;a href=&#34;https://instagram.com/p/BGvuInzyFAe/&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;&lt;img class=&#34;card-img-top img-fluid&#34; src=&#34;https://scontent-dfw5-2.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/13437259_1631155187211476_646101738_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com&amp;amp;_nc_cat=108&amp;amp;_nc_ohc=h9gZrNf6oeoAX9s00hw&amp;amp;oh=d850785579b345d116540d5436c75c79&amp;amp;oe=5F24238F&#34; width=&#34;640&#34;  height=&#34;451&#34; alt=&#34;Instagram Image&#34;&gt;&lt;/a&gt;
-	&lt;div class=&#34;card-body&#34;&gt;
-		
-		&lt;a href=&#34;https://www.instagram.com/koloot.design&#34; class=&#34;card-link&#34;&gt;View More on Instagram&lt;/a&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- raw HTML omitted --&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;youtube-privacy-enhanced-shortcode&#34;&gt;YouTube Privacy Enhanced Shortcode&lt;/h2&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/ZJthWmvUzzc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;!-- raw HTML omitted --&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;twitter-simple-shortcode&#34;&gt;Twitter Simple Shortcode&lt;/h2&gt;
-
-
-
-
-&lt;style type=&#34;text/css&#34;&gt;
-  .twitter-tweet {
-  font: 14px/1.45 -apple-system,BlinkMacSystemFont,&#34;Segoe UI&#34;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&#34;Helvetica Neue&#34;,sans-serif;
-  border-left: 4px solid #2b7bb9;
-  padding-left: 1.5em;
-  color: #555;
-}
-  .twitter-tweet a {
-  color: #2b7bb9;
-  text-decoration: none;
-}
-  blockquote.twitter-tweet a:hover,
-  blockquote.twitter-tweet a:focus {
-  text-decoration: underline;
-}
-&lt;/style&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;“In addition to being more logical, asymmetry has the advantage that its complete appearance is far more optically effective than symmetry.”&lt;br&gt;— Jan Tschichold &lt;a href=&#34;https://t.co/gcv7SrhvJb&#34;&gt;pic.twitter.com/gcv7SrhvJb&lt;/a&gt;&lt;/p&gt;&amp;mdash; Graphic Design History (@DesignReviewed) &lt;a href=&#34;https://twitter.com/DesignReviewed/status/1085870671291310081?ref_src=twsrc%5Etfw&#34;&gt;January 17, 2019&lt;/a&gt;&lt;/blockquote&gt;
-
-&lt;!-- raw HTML omitted --&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;vimeo-simple-shortcode&#34;&gt;Vimeo Simple Shortcode&lt;/h2&gt;
-
-
-
-
-
-&lt;style&gt;
-.__h_video {
-   position: relative;
-   padding-bottom: 56.23%;
-   height: 0;
-   overflow: hidden;
-   width: 100%;
-   background: #000;
-}
-.__h_video img {
-   width: 100%;
-   height: auto;
-   color: #000;
-}
-.__h_video .play {
-   height: 72px;
-   width: 72px;
-   left: 50%;
-   top: 50%;
-   margin-left: -36px;
-   margin-top: -36px;
-   position: absolute;
-   cursor: pointer;
-}
-&lt;/style&gt;
-
-
-&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
-&lt;a href=&#34;https://vimeo.com/4.8912912e&amp;#43;07&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
-
-
-&lt;img src=&#34;https://i.vimeocdn.com/video/337401969_640.jpg&#34; srcset=&#34;https://i.vimeocdn.com/video/337401969_640.jpg 1x, https://i.vimeocdn.com/video/337401969.jpg 2x&#34; alt=&#34;Sing Jan Swing - Kinetic Type&#34;&gt;
-&lt;div class=&#34;play&#34;&gt;&lt;svg version=&#34;1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 61 61&#34;&gt;&lt;circle cx=&#34;30.5&#34; cy=&#34;30.5&#34; r=&#34;30.5&#34; opacity=&#34;.8&#34; fill=&#34;#000&#34;&gt;&lt;/circle&gt;&lt;path d=&#34;M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z&#34; fill=&#34;#fff&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>Placeholder Text</title>
-      <link>/post/placeholder-text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de
-pectora summo. Redit teque digerit hominumque toris verebor lumina non cervice
-subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc
-caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis
-lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Exierant elisi ambit vivere dedere&lt;/li&gt;
-&lt;li&gt;Duce pollice&lt;/li&gt;
-&lt;li&gt;Eris modo&lt;/li&gt;
-&lt;li&gt;Spargitque ferrea quos palude&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Rursus nulli murmur; hastile inridet ut ab gravi sententia! Nomine potitus
-silentia flumen, sustinet placuit petis in dilapsa erat sunt. Atria
-tractus malis.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Comas hunc haec pietate fetum procerum dixit&lt;/li&gt;
-&lt;li&gt;Post torum vates letum Tiresia&lt;/li&gt;
-&lt;li&gt;Flumen querellas&lt;/li&gt;
-&lt;li&gt;Arcanaque montibus omnes&lt;/li&gt;
-&lt;li&gt;Quidem et&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;vagus-elidunt&#34;&gt;Vagus elidunt&lt;/h1&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Canons_of_page_construction#Van_de_Graaf_canon&#34;&gt;The Van de Graaf Canon&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;mane-refeci-capiebant-unda-mulcebat&#34;&gt;Mane refeci capiebant unda mulcebat&lt;/h2&gt;
-&lt;p&gt;Victa caducifer, malo vulnere contra
-dicere aurato, ludit regale, voca! Retorsit colit est profanae esse virescere
-furit nec; iaculi matertera et visa est, viribus. Divesque creatis, tecta novat collumque vulnus est, parvas. &lt;strong&gt;Faces illo pepulere&lt;/strong&gt; tempus adest. Tendit flamma, ab opes virum sustinet, sidus sequendo urbis.&lt;/p&gt;
-&lt;p&gt;Iubar proles corpore raptos vero auctor imperium; sed et huic: manus caeli
-Lelegas tu lux. Verbis obstitit intus oblectamina fixis linguisque ausus sperare
-Echionides cornuaque tenent clausit possit. Omnia putatur. Praeteritae refert
-ausus; ferebant e primus lora nutat, vici quae mea ipse. Et iter nil spectatae
-vulnus haerentia iuste et exercebat, sui et.&lt;/p&gt;
-&lt;p&gt;Eurytus Hector, materna ipsumque ut Politen, nec, nate, ignari, vernum cohaesit sequitur. Vel &lt;strong&gt;mitis temploque&lt;/strong&gt; vocatus, inque alis, &lt;em&gt;oculos nomen&lt;/em&gt; non silvis corpore coniunx ne displicet illa. Crescunt non unus, vidit visa quantum inmiti flumina mortis facto sic: undique a alios vincula sunt iactata abdita! Suspenderat ego fuit tendit: luna, ante urbem
-Propoetides &lt;strong&gt;parte&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Typesetting</title>
-      <link>/post/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
-&lt;p&gt;In this example we will be using &lt;a href=&#34;https://katex.org/&#34;&gt;KaTeX&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a partial under &lt;code&gt;/layouts/partials/math.html&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Within this partial reference the &lt;a href=&#34;https://katex.org/docs/autorender.html&#34;&gt;Auto-render Extension&lt;/a&gt; or host these scripts locally.&lt;/li&gt;
-&lt;li&gt;Include the partial in your templates like so:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;{{ if or .Params.math .Site.Params.math }}
-{{ partial &amp;quot;math.html&amp;quot; . }}
-{{ end }}
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;To enable KaTex globally set the parameter &lt;code&gt;math&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in a project&amp;rsquo;s configuration&lt;/li&gt;
-&lt;li&gt;To enable KaTex on a per page basis include the parameter &lt;code&gt;math: true&lt;/code&gt; in content files.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Use the online reference of &lt;a href=&#34;https://katex.org/docs/supported.html&#34;&gt;Supported TeX Functions&lt;/a&gt;
-&lt;/p&gt;
-&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
-&lt;p&gt;Inline math: $$ \varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887… $$&lt;/p&gt;
-&lt;p&gt;Block math:&lt;/p&gt;
-&lt;p&gt;$$
-\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
-$$&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Emoji Support</title>
-      <link>/post/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&#34;https://gohugo.io/functions/emojify/&#34;&gt;&lt;code&gt;emojify&lt;/code&gt;&lt;/a&gt; function can be called directly in templates or &lt;a href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;&gt;Inline Shortcodes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To enable emoji globally, set &lt;code&gt;enableEmoji&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in your site’s &lt;a href=&#34;https://gohugo.io/getting-started/configuration/&#34;&gt;configuration&lt;/a&gt; and then you can type emoji shorthand codes directly in content files; e.g.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;p&gt;The &lt;a href=&#34;http://www.emoji-cheat-sheet.com/&#34;&gt;Emoji cheat sheet&lt;/a&gt; is a useful reference for emoji shorthand codes.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt; The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;.emoji {
-font-family: Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+for c in [&#39;EFQ&#39;, &#39;EFV&#39;, &#39;EFZ&#39;]:
+    self.params[c] = otherparam
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Trading is a secretive industry and there are little tutorials out online for how to get started. I only got my start after a lucky internship offer from a trading firm. So if you&amp;rsquo;re a college student who read this blog post and think you&amp;rsquo;re interested in trading, consider participating in &lt;a href=&#34;https://traders.mit.edu/&#34;&gt;Traders@MIT&lt;/a&gt;, &lt;a href=&#34;https://midwesttrading.uchicago.edu/&#34;&gt;Midwest Trading Competition&lt;/a&gt; and the &lt;a href=&#34;https://ritc.rotman.utoronto.ca/&#34;&gt;Rotman International Trading Competition&lt;/a&gt;. I hope this blog post inspired you to try building a trading bot and gave you a head start!&lt;/p&gt;</description>
     </item>
     
   </channel>
