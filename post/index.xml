@@ -72,7 +72,7 @@ for c in [&#39;EFQ&#39;, &#39;EFV&#39;, &#39;EFZ&#39;]:
     self.params[c] = otherparam
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Trading is a secretive industry and there are little tutorials out online for how to get started. I only got my start after a lucky internship offer from a trading firm. So if you&amp;rsquo;re a college student who read this blog post and think you&amp;rsquo;re interested in trading, consider participating in &lt;a href=&#34;https://traders.mit.edu/&#34;&gt;Traders@MIT&lt;/a&gt;, &lt;a href=&#34;https://midwesttrading.uchicago.edu/&#34;&gt;Midwest Trading Competition&lt;/a&gt; and the &lt;a href=&#34;https://ritc.rotman.utoronto.ca/&#34;&gt;Rotman International Trading Competition&lt;/a&gt;. I hope this blog post inspired you to try building a trading bot and gave you a head start!&lt;/p&gt;
-&lt;p&gt;Questions? Email me.&lt;/p&gt;</description>
+&lt;p&gt;Questions? Email me or discuss this on &lt;a href=&#34;https://news.ycombinator.com/newest&#34;&gt;Hacker News&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
   </channel>
