@@ -14033,7 +14033,7 @@ We begin by looking at past contract prices.</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="August,-October-and-December-contracts">August, October and December contracts<a class="anchor-link" href="#August,-October-and-December-contracts">&#182;</a></h4><p>We'll ignore the June contract for now (it's a little more mathematically complicated to price).</p>
-<p>It looks all 3 contracts expire after natural gas capacity is used up, and therefore their prices would be \$3.00 + \\$.001 * amount of electricity usage exceeding coal capacity. Let N be the number of days until the contract expires, G be the expected natural gas capacity (KWh), and C be the expected coal capacity (KWh), E be the amount of electricity already consumed (KWh).</p>
+<p>Historically, these 3 contracts expire only after natural gas capacity is used up, and therefore their prices would be \$3.00 + \$.001 * amount of electricity usage exceeding coal capacity. Let N be the number of days until the contract expires, G be the expected natural gas capacity (KWh), and C be the expected coal capacity (KWh), E be the amount of electricity already consumed (KWh).</p>
 <p>Then, the expected value of the contract is $3.00 + max(0, .001 \times (\frac{1}{\lambda} \times N + E - G - C))$, where $\lambda$ = 0.1252364948706893 was computed earlier. Here's our predictive formula in action for the December contract in 2015.</p>
 
 </div>
@@ -14117,7 +14117,7 @@ We begin by looking at past contract prices.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="The-June-contract">The June contract<a class="anchor-link" href="#The-June-contract">&#182;</a></h4><p>The June contract is different from the other contracts. Historically, it either settled to \$2 or \\$3, depending on whether natural gas capacity was exhausted by expiry, with 2 of 10 cases expiring at \$2. Our previous approach would not be able to accurately price the June contract at all!</p>
+<h4 id="The-June-contract">The June contract<a class="anchor-link" href="#The-June-contract">&#182;</a></h4><p>The June contract is different from the other contracts. Historically, it either settled to \$2 or \$3, depending on whether natural gas capacity was exhausted by expiry, with 2 of 10 cases expiring at \$2. Our previous approach would not be able to accurately price the June contract at all!</p>
 <p>There are 2 ways around this: using the Central Limit Theorem (CLT) to assume normality in the distribution of consumption, or to use the Erlang distribution to compute the probability exactly using marginalization and integration. We went with the latter, but I'll show both methods and the differences in their predictions.</p>
 
 </div>
@@ -14296,7 +14296,7 @@ We begin by looking at past contract prices.</p>
 <h4 id="Direct-computation-using-the-Erlang-Distribution">Direct computation using the Erlang Distribution<a class="anchor-link" href="#Direct-computation-using-the-Erlang-Distribution">&#182;</a></h4><p>Once again, we model the remaining gas G ~ N($\mu$, $\sigma^2$).</p>
 <p>We want to know P = P(G &lt; E) = P(G - E &lt; 0).</p>
 <p>P(G - E &lt; 0) = $\int_{G} P(g - E &lt; 0) P(G = g) dG$</p>
-<p>While this integral looks daunting to compute mathematically, we can simply compute it numerically to enough precision. We reduce the infinite range (-$\inf$, $\inf$) to ($\mu$ - 5$\sigma$, $\mu$ + 5$\sigma$), and take k = 100000 evenly spaced points in this range. With this, our integral becomes a summation which we can compute via a dot product.</p>
+<p>While this integral looks daunting to compute mathematically, we can simply compute it numerically to enough precision. We reduce the infinite range (-$\inf$, $\inf$) to ($\mu$ - 5$\sigma$, $\mu$ + 5$\sigma$), and take k = 10000 evenly spaced points in this range. With this, our integral becomes a summation which we can compute via a dot product.</p>
 <p>P(G - E &lt; 0) = $\sum_{\mu - 5\sigma}^{\mu + 5\sigma} P(g - E &lt; 0) P(G = g)$</p>
 
 </div>
